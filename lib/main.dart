@@ -14,8 +14,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: AppTheme.theme,
       routes: {
         '/courses': (context) => CoursesScreen(),
         '/grades': (context) => GradesScreen(),
