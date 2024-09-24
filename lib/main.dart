@@ -1,10 +1,12 @@
+import 'package:augmentedfocus/screens/courses/courses.dart';
+import 'package:augmentedfocus/screens/courses/grades.dart';
+import 'package:augmentedfocus/screens/courses/upcoming_events.dart';
+import 'package:augmentedfocus/screens/profile/profile.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 import 'config/theme/app_theme.dart';
 
 void main() async {
-  await dotenv.load();
   runApp(const MyApp());
 }
 
@@ -16,6 +18,13 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: AppTheme.theme,
+      initialRoute: '/courses',
+      routes: {
+        '/courses': (context) => CoursesScreen(),
+        '/grades': (context) => GradesScreen(),
+        '/upcoming-events': (context) => UpcomingEventsScreen(),
+        '/profile': (context) => ProfileScreen(),
+      },
     );
   }
 }
