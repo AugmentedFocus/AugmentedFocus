@@ -1,21 +1,26 @@
+import 'package:augmentedfocus/screens/login/login_screen.dart';
+import 'package:augmentedfocus/screens/login/register_screen.dart';
+import 'package:augmentedfocus/screens/login/welcome_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-import 'config/theme/app_theme.dart';
-
-void main() async {
-  await dotenv.load();
-  runApp(const MyApp());
+void main() {
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: AppTheme.theme,
+      title: 'Login & Register App',
+      theme: ThemeData(
+        primarySwatch: Colors.orange,
+      ),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => WelcomeScreen(),
+        '/register': (context) => RegisterScreen(),
+        '/login': (context) => LoginScreen(),
+      },
     );
   }
 }
