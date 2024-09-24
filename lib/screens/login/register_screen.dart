@@ -7,7 +7,7 @@ class RegisterScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text('Register'),
       ),
-      body: Padding(
+      body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
@@ -49,6 +49,7 @@ class RegisterScreen extends StatelessWidget {
                 },
                 style: OutlinedButton.styleFrom(
                   padding: EdgeInsets.symmetric(vertical: 20),
+                  backgroundColor: Colors.orange,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
@@ -60,7 +61,7 @@ class RegisterScreen extends StatelessWidget {
                 child: Text(
                   'NEXT',
                   style: TextStyle(
-                    color: Colors.orange,
+                    color: Colors.white,
                     fontSize: 18,
                   ),
                 ),
