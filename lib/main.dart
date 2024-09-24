@@ -18,7 +18,6 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: AppTheme.theme,
-      initialRoute: '/courses',
       routes: {
         '/courses': (context) => CoursesScreen(),
         '/grades': (context) => GradesScreen(),
