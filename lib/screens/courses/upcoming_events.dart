@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
+import '../../shared/navbar.dart';
+
 class UpcomingEventsScreen extends StatelessWidget {
   Future<List<String>> fetchEvents() async {
     var response = await http.get(Uri.parse("https://corporatebs-generator.sameerkumar.website"));
@@ -40,6 +42,7 @@ class UpcomingEventsScreen extends StatelessWidget {
           }
         },
       ),
+      bottomNavigationBar: NavBar(),
     );
   }
 }
