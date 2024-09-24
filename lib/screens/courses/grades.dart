@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../shared/navbar.dart';
+
 class GradesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -28,6 +30,7 @@ class GradesScreen extends StatelessWidget {
           );
         },
       ),
+      bottomNavigationBar: NavBar(),
     );
   }
 }
