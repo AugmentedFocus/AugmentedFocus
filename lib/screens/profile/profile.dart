@@ -38,7 +38,7 @@ class ProfileScreen extends StatelessWidget {
               width: double.infinity,
               child: OutlinedButton(
                 onPressed: () {
-                  // Implement log out functionality
+                  Navigator.pushNamed(context, '/welcome');
                 },
                 style: OutlinedButton.styleFrom(
                   padding: EdgeInsets.symmetric(vertical: 20),
@@ -52,7 +52,7 @@ class ProfileScreen extends StatelessWidget {
                   ),
                 ),
                 child: Text(
-                  'REGISTER',
+                  'LOG OUT',
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 18,
