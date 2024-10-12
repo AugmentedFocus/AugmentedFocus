@@ -30,7 +30,7 @@ class LoginScreen extends StatelessWidget {
               width: double.infinity,
               child: OutlinedButton(
                 onPressed: () {
-                  // Implementa el proceso de inicio de sesión aquí
+                  Navigator.pushNamed(context, '/courses');
                 },
                 style: OutlinedButton.styleFrom(
                   padding: EdgeInsets.symmetric(vertical: 20),
