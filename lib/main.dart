@@ -22,7 +22,8 @@ class MyApp extends StatelessWidget {
       theme: AppTheme.theme, // Assuming you have a defined theme
       initialRoute: '/', // Set initial route to welcome screen
       routes: {
-        '/': (context) => WelcomeScreen(),
+        '/': (context) => const WelcomeScreen(),
+        '/welcome': (context) => WelcomeScreen(),
         '/register': (context) => RegisterScreen(),
         '/login': (context) => LoginScreen(),
         '/courses': (context) => CoursesScreen(),
