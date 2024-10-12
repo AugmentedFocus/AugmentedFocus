@@ -14,17 +14,22 @@ class GradesScreen extends StatelessWidget {
         itemBuilder: (context, index) {
           return Card(
             color: Colors.redAccent,
-            child: ListTile(
-              title: Text('Course title'),
-              subtitle: Text('Teacher: Teacher name'),
-              trailing: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text('Grade 1'),
-                  Text('Grade 2'),
-                  Text('Grade 3'),
-                  Text('Grade 4'),
-                ],
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: ListTile(
+                title: Text('Course title'),
+                subtitle: Text('Teacher: Teacher name'),
+                trailing: SingleChildScrollView(  // Envolver la columna en SingleChildScrollView
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min, // Ajusta el tamaño según el contenido
+                    crossAxisAlignment: CrossAxisAlignment.end, // Alinea las notas a la derecha
+                    children: [
+                      Text('Grade 1'),
+                      Text('Grade 2'),
+                      Text('Grade 3'),
+                    ],
+                  ),
+                ),
               ),
             ),
           );
