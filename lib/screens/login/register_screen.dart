@@ -45,7 +45,7 @@ class RegisterScreen extends StatelessWidget {
               width: double.infinity,
               child: OutlinedButton(
                 onPressed: () {
-                  // Implementa el proceso de registro aquí
+                  Navigator.pushNamed(context, '/');
                 },
                 style: OutlinedButton.styleFrom(
                   padding: EdgeInsets.symmetric(vertical: 20),
