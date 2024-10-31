@@ -16,44 +16,55 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
       backgroundColor: Colors.white,
       body: Stack(
         children: [
+          // Background Image with a subtle dark overlay
           Positioned.fill(
-            child: Image.asset(
-              'assets/img/welcome_screen.jpg',
-              fit: BoxFit.cover,
+            child: ColorFiltered(
+              colorFilter: ColorFilter.mode(
+                Colors.black.withOpacity(0.4),
+                BlendMode.darken,
+              ),
+              child: Image.asset(
+                'assets/img/welcome_screen.jpg',
+                fit: BoxFit.cover,
+              ),
             ),
           ),
+          // Button Section
           Align(
             alignment: Alignment.bottomCenter,
             child: Padding(
-              padding: const EdgeInsets.only(left: 10, right: 10, bottom: 20),
+              padding: const EdgeInsets.only(left: 20, right: 20, bottom: 40),
               child: Row(
                 children: [
                   Expanded(
                     child: Padding(
-                      padding: const EdgeInsets.only(right: 5),
-                      child: OutlinedButton(
+                      padding: const EdgeInsets.only(right: 8.0),
+                      child: ElevatedButton(
                         onPressed: () {
                           Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(builder: (context) => LoginScreen()),
                           );
                         },
-                        style: OutlinedButton.styleFrom(
-                          padding: EdgeInsets.symmetric(vertical: 20),
+                        style: ElevatedButton.styleFrom(
+                          padding: const EdgeInsets.symmetric(vertical: 18),
                           backgroundColor: Colors.white,
                           shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10),
+                            borderRadius: BorderRadius.circular(12),
                           ),
-                          side: BorderSide(
+                          side: const BorderSide(
                             color: Colors.black,
                             width: 2,
                           ),
+                          shadowColor: Colors.black.withOpacity(0.2),
+                          elevation: 5,
                         ),
-                        child: Text(
+                        child: const Text(
                           'LOG IN',
                           style: TextStyle(
                             color: Colors.black,
                             fontSize: 18,
+                            fontWeight: FontWeight.bold,
                           ),
                         ),
                       ),
@@ -61,30 +72,33 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   ),
                   Expanded(
                     child: Padding(
-                      padding: const EdgeInsets.only(left: 5),
-                      child: OutlinedButton(
+                      padding: const EdgeInsets.only(left: 8.0),
+                      child: ElevatedButton(
                         onPressed: () {
                           Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(builder: (context) => RegisterScreen()),
                           );
                         },
-                        style: OutlinedButton.styleFrom(
-                          padding: EdgeInsets.symmetric(vertical: 20),
+                        style: ElevatedButton.styleFrom(
+                          padding: const EdgeInsets.symmetric(vertical: 18),
                           backgroundColor: Colors.orange,
                           shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10),
+                            borderRadius: BorderRadius.circular(12),
                           ),
-                          side: BorderSide(
+                          side: const BorderSide(
                             color: Colors.orange,
                             width: 2,
                           ),
+                          shadowColor: Colors.black.withOpacity(0.2),
+                          elevation: 5,
                         ),
-                        child: Text(
+                        child: const Text(
                           'REGISTER',
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 18,
+                            fontWeight: FontWeight.bold,
                           ),
                         ),
                       ),
