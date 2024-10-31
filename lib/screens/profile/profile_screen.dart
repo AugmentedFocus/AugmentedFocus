@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../shared/navbar_roots.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});

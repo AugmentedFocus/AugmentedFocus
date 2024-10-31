@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../screens/courses/courses_screen.dart';
 import '../screens/courses/grades_screen.dart';
 import '../screens/courses/upcoming_events_screen.dart';
-import '../screens/profile/profile.dart';
+import '../screens/profile/profile_screen.dart';
 
 class NavBarRoots extends StatefulWidget {
   const NavBarRoots({super.key});
