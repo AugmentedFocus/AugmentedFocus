@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 
-import '../../shared/navbar.dart';
+import '../../shared/navbar_roots.dart';
 
 class GradesScreen extends StatelessWidget {
+  const GradesScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,7 +37,6 @@ class GradesScreen extends StatelessWidget {
           );
         },
       ),
-      bottomNavigationBar: NavBar(),
     );
   }
 }
