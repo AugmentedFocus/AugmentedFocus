@@ -1,9 +1,11 @@
-import 'package:augmentedfocus/shared/navbar.dart';
+import 'package:augmentedfocus/shared/navbar_roots.dart';
 import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class CoursesScreen extends StatelessWidget {
+  const CoursesScreen({super.key});
+
   Future<List<String>> fetchCourses() async {
     var response = await http.get(Uri.parse("https://corporatebs-generator.sameerkumar.website"));
     var jsonResponse = json.decode(response.body);
@@ -41,7 +43,6 @@ class CoursesScreen extends StatelessWidget {
           }
         },
       ),
-      bottomNavigationBar: NavBar(),
     );
   }
 }
