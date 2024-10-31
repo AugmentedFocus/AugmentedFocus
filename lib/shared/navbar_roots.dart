@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../screens/courses/courses.dart';
-import '../screens/courses/grades.dart';
-import '../screens/courses/upcoming_events.dart';
+import '../screens/courses/courses_screen.dart';
+import '../screens/courses/grades_screen.dart';
+import '../screens/courses/upcoming_events_screen.dart';
 import '../screens/profile/profile.dart';
 
 class NavBarRoots extends StatefulWidget {
