@@ -14,10 +14,10 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
       backgroundColor: Colors.white,
       body: Stack(
         children: [
-          Positioned.fill( // Esto hace que la imagen ocupe todo el fondo
+          Positioned.fill(
             child: Image.asset(
-              'assets/img/welcome_screen.png', // Asegúrate de usar el formato correcto
-              fit: BoxFit.cover, // La imagen se ajustará al tamaño de la pantalla
+              'assets/img/welcome_screen.jpg',
+              fit: BoxFit.cover,
             ),
           ),
           Align(
@@ -35,7 +35,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                         },
                         style: OutlinedButton.styleFrom(
                           padding: EdgeInsets.symmetric(vertical: 20),
-                          backgroundColor: Colors.white, // Fondo blanco para el botón de login
+                          backgroundColor: Colors.white,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10),
                           ),
