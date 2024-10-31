@@ -1,3 +1,5 @@
+import 'package:augmentedfocus/screens/login/login_screen.dart';
+import 'package:augmentedfocus/screens/login/register_screen.dart';
 import 'package:flutter/material.dart';
 
 class WelcomeScreen extends StatefulWidget {
@@ -31,7 +33,10 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                       padding: const EdgeInsets.only(right: 5),
                       child: OutlinedButton(
                         onPressed: () {
-                          Navigator.pushNamed(context, '/login');
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(builder: (context) => LoginScreen()),
+                          );
                         },
                         style: OutlinedButton.styleFrom(
                           padding: EdgeInsets.symmetric(vertical: 20),
@@ -59,7 +64,10 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                       padding: const EdgeInsets.only(left: 5),
                       child: OutlinedButton(
                         onPressed: () {
-                          Navigator.pushNamed(context, '/register');
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(builder: (context) => RegisterScreen()),
+                          );
                         },
                         style: OutlinedButton.styleFrom(
                           padding: EdgeInsets.symmetric(vertical: 20),
