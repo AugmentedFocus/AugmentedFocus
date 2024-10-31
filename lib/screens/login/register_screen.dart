@@ -55,7 +55,6 @@ class RegisterScreen extends StatelessWidget {
               ),
               const SizedBox(height: 30),
 
-              // Terms and Privacy Text with GestureDetector
               GestureDetector(
                 onTap: () => _showTermsAndPrivacyDialog(context),
                 child: const Text(
