@@ -28,6 +28,9 @@ class UnitsScreen extends StatelessWidget {
       Colors.lightBlueAccent,
       Colors.yellowAccent,
       Colors.orangeAccent,
+      Colors.purpleAccent,
+      Colors.tealAccent,
+      Colors.pinkAccent,
     ];
 
     return Scaffold(
