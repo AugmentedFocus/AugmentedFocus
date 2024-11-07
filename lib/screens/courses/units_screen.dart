@@ -43,7 +43,7 @@ class UnitsScreen extends StatelessWidget {
           final unitTitle = units[index];
           final topics = topicsByUnit[unitTitle] ?? [];
           final unitColor = colors[index % colors.length];
-          final topicColor = Colors.white.withOpacity(0.4);
+          final topicColor = Colors.white.withOpacity(0.5);
           final activityColor = Colors.white.withOpacity(0.4);
 
           return Padding(
