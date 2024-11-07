@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'activities_screen.dart';
+
 class UnitsScreen extends StatelessWidget {
   final String courseTitle;
 
@@ -73,11 +75,17 @@ class UnitsScreen extends StatelessWidget {
                         subtitle: const Text('About the topic'),
                         children: activities.map((activity) {
                           return ListTile(
-                            tileColor: activityColor, // Color aún más claro para activities
+                            tileColor: activityColor,
                             title: Text(activity),
                             onTap: () {
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(content: Text("Selected $activity in $topic")),
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => ActivitiesScreen(
+                                    topicTitle: topic,
+                                    activityTitle: activity,
+                                  ),
+                                ),
                               );
                             },
                           );
