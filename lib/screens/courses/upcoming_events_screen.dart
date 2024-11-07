@@ -14,11 +14,13 @@ class UpcomingEventsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final List<Color> colors = [
-      Colors.orangeAccent,
-      Colors.lightBlueAccent,
       Colors.redAccent,
-      Colors.yellowAccent,
       Colors.greenAccent,
+      Colors.lightBlueAccent,
+      Colors.yellowAccent,
+      Colors.orangeAccent,
+      Colors.purpleAccent,
+      Colors.tealAccent,
       Colors.pinkAccent,
     ];
 
