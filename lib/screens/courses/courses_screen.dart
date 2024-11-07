@@ -50,9 +50,11 @@ class CoursesScreen extends StatelessWidget {
                     ),
                     child: InkWell(
                       onTap: () {
-                        showModalBottomSheet(
-                          context: context,
-                          builder: (context) => UnitsScreen(courseTitle: courses[index]),
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => UnitsScreen(courseTitle: courses[index]),
+                          ),
                         );
                       },
                       child: Padding(
@@ -60,20 +62,19 @@ class CoursesScreen extends StatelessWidget {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            // Contenido del curso
                             Expanded(
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    courses[index], // Título del curso dinámico
+                                    courses[index],
                                     style: const TextStyle(
                                       fontSize: 20,
                                       fontWeight: FontWeight.bold,
                                       color: Colors.black,
                                     ),
                                     maxLines: 1,
-                                    overflow: TextOverflow.ellipsis, // Trunca el texto si es muy largo
+                                    overflow: TextOverflow.ellipsis,
                                   ),
                                   const SizedBox(height: 4),
                                   const Text(
@@ -86,7 +87,6 @@ class CoursesScreen extends StatelessWidget {
                                 ],
                               ),
                             ),
-                            // Ícono de marcador
                             const Icon(
                               Icons.bookmark_border,
                               color: Colors.black,
