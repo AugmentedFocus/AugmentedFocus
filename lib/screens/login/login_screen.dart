@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../shared/navbar_roots.dart';
+import '../../widgets/navbar_roots.dart';
 
 class LoginScreen extends StatelessWidget {
   @override

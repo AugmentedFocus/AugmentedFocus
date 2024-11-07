@@ -1,6 +1,6 @@
 import 'package:augmentedfocus/screens/login/login_screen.dart';
 import 'package:augmentedfocus/screens/login/welcome_screen.dart';
-import 'package:augmentedfocus/shared/navbar_roots.dart';
+import 'package:augmentedfocus/widgets/navbar_roots.dart';
 import 'package:flutter/material.dart';
 
 void main() {
