@@ -5,6 +5,17 @@ class GradesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final List<Color> colors = [
+      Colors.redAccent,
+      Colors.greenAccent,
+      Colors.lightBlueAccent,
+      Colors.yellowAccent,
+      Colors.orangeAccent,
+      Colors.purpleAccent,
+      Colors.tealAccent,
+      Colors.pinkAccent,
+    ];
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Grades'),
@@ -13,10 +24,12 @@ class GradesScreen extends StatelessWidget {
       body: ListView.builder(
         itemCount: 5,
         itemBuilder: (context, index) {
+          final Color cardColor = colors[index % colors.length]; // Rotación de colores
+
           return Padding(
             padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
             child: Card(
-              color: index % 2 == 0 ? Colors.redAccent : Colors.orangeAccent,
+              color: cardColor,
               elevation: 4,
               child: Padding(
                 padding: const EdgeInsets.all(12.0),
@@ -34,7 +47,7 @@ class GradesScreen extends StatelessWidget {
                               style: TextStyle(
                                 fontSize: 20,
                                 fontWeight: FontWeight.bold,
-                                color: Colors.white,
+                                color: Colors.black,
                               ),
                             ),
                             SizedBox(height: 4),
@@ -42,7 +55,7 @@ class GradesScreen extends StatelessWidget {
                               'Teacher name',
                               style: TextStyle(
                                 fontSize: 16,
-                                color: Colors.white70,
+                                color: Colors.black,
                               ),
                             ),
                           ],
