@@ -9,6 +9,46 @@ class ArActivity1 extends StatefulWidget {
   State<ArActivity1> createState() => _ArActivity1State();
 }
 
+class _ArActivity1State extends State<ArActivity1>{
+  ArCoreController? coreController;
+
+  augmentedRealityViewCreated(ArCoreController controller) {
+    coreController = controller;
+
+    displayCube(coreController!);
+  }
+
+  displayCube(ArCoreController controller){
+    final materials = ArCoreMaterial(
+      color: Colors.blue,
+      metallic: 2,
+    );
+
+    final cube = ArCoreCube(
+      size: vector64.Vector3(0.5, 0.5, 0.5),
+      materials: [materials],
+    );
+
+    final node = ArCoreNode(
+      shape: cube,
+      position: vector64.Vector3(-0.5, 0.5, -3.0)
+    );
+
+    coreController!.addArCoreNode(node);
+  }
+
+  @override
+  Widget build(BuildContext context)
+  {
+    return Scaffold(
+      body: ArCoreView(
+          onArCoreViewCreated: augmentedRealityViewCreated,
+      ),
+    );
+  }
+}
+
+/*
 class _ArActivity1State extends State<ArActivity1> {
   ArCoreController? arCoreController;
 
@@ -76,3 +116,5 @@ class _ArActivity1State extends State<ArActivity1> {
     );
   }
 }
+
+ */
