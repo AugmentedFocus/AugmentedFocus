@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../ar/ar_activity_1.dart';
+
 
 class ActivitiesScreen extends StatelessWidget {
   final String topicTitle;
@@ -16,79 +18,87 @@ class ActivitiesScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text(topicTitle),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  activityTitle,
-                  style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    Text('Date: ${dateCreated.toLocal().toString().split(' ')[0]}'),
-                    Text('Due Date: ${dueDate.toLocal().toString().split(' ')[0]}'),
-                  ],
-                ),
-              ],
-            ),
-            const SizedBox(height: 16),
-            const Text(
-              "Descripción de la actividad:",
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(height: 8),
-            const Text(
-              "Esta es una descripción detallada de la actividad, explicando los objetivos y las tareas necesarias para completarla.",
-              style: TextStyle(fontSize: 16),
-            ),
-            const Spacer(),
-            Align(
-              alignment: Alignment.bottomRight,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                mainAxisSize: MainAxisSize.min,
+      body: Center(
+        child: Container(
+          width: MediaQuery.of(context).size.width * 0.9,
+          padding: const EdgeInsets.all(16.0),
+          decoration: BoxDecoration(
+            color: Colors.grey.shade200,
+            border: Border.all(color: Colors.black),
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  SizedBox(
-                    width: 150,
-                    child: ElevatedButton.icon(
-                      onPressed: () {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(content: Text("Descargando actividad...")),
-                        );
-                      },
-                      icon: const Icon(Icons.download),
-                      label: const Text("Descargar"),
-                      style: ElevatedButton.styleFrom(
-                        padding: const EdgeInsets.symmetric(vertical: 12.0),
-                      ),
-                    ),
+                  Text(
+                    activityTitle,
+                    style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                   ),
-                  const SizedBox(height: 8),
-                  SizedBox(
-                    width: 150,
-                    child: ElevatedButton.icon(
-                      onPressed: () {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(content: Text("Iniciando actividad...")),
-                        );
-                      },
-                      icon: const Icon(Icons.play_arrow),
-                      label: const Text("Iniciar Actividad"),
-                      style: ElevatedButton.styleFrom(
-                        padding: const EdgeInsets.symmetric(vertical: 12.0),
-                      ),
-                    ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      Text('Date', style: TextStyle(fontWeight: FontWeight.bold)),
+                      Text('Due Date', style: TextStyle(fontWeight: FontWeight.bold)),
+                    ],
                   ),
                 ],
               ),
-            ),
-          ],
+              const SizedBox(height: 16),
+              // Descripción de la actividad
+              const Text(
+                "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s...",
+                style: TextStyle(fontSize: 16),
+              ),
+              const Spacer(),
+              // Botones de Descargar e Iniciar Actividad
+              Center(
+                child: Column(
+                  children: [
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width * 0.5,
+                      child: ElevatedButton(
+                        onPressed: () {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(content: Text("Descargando actividad...")),
+                          );
+                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.orange,
+                          padding: const EdgeInsets.symmetric(vertical: 12.0),
+                        ),
+                        child: const Text(
+                          "Download",
+                          style: TextStyle(color: Colors.black, fontSize: 16),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 8),
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width * 0.5,
+                      child: ElevatedButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => const ArActivity1()),
+                          );
+                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.orange,
+                          padding: const EdgeInsets.symmetric(vertical: 12.0),
+                        ),
+                        child: const Text(
+                          "Start activity",
+                          style: TextStyle(color: Colors.black, fontSize: 16),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
