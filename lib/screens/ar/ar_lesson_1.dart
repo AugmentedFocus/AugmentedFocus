@@ -229,8 +229,8 @@ class _ClaseSistemaSolarARState extends State<ClaseSistemaSolarAR> with TickerPr
       double orbitRadius = (planet['orbitRadius'] as double) * 0.3; // Escalar para visualización
 
       // Dibujamos 20 puntos para formar una órbita
-      for (int i = 0; i < 20; i++) {
-        double angle = i * (2 * math.pi / 20);
+      for (int i = 0; i < 60; i++) {
+        double angle = i * (2 * math.pi / 60);
         double x = orbitRadius * math.cos(angle);
         double z = -0.5 - orbitRadius * math.sin(angle);
 
