@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../ar/ar_activity_1.dart';
-
+import '../ar/ar_lesson_1.dart'; // Importamos el nuevo archivo
 
 class ActivitiesScreen extends StatelessWidget {
   final String topicTitle;
@@ -39,16 +39,32 @@ class ActivitiesScreen extends StatelessWidget {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
-                      Text('Date', style: TextStyle(fontWeight: FontWeight.bold)),
-                      Text('Due Date', style: TextStyle(fontWeight: FontWeight.bold)),
+                      Text('Fecha: ${dateCreated.day}/${dateCreated.month}/${dateCreated.year}',
+                          style: const TextStyle(fontWeight: FontWeight.bold)),
+                      Text('Entrega: ${dueDate.day}/${dueDate.month}/${dueDate.year}',
+                          style: const TextStyle(fontWeight: FontWeight.bold)),
                     ],
                   ),
                 ],
               ),
               const SizedBox(height: 16),
-              // Descripción de la actividad
+              // Descripción de la actividad actualizada para sistema solar
               const Text(
-                "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s...",
+                "Actividad de Realidad Aumentada: Sistema Solar. En esta actividad, explorarás los planetas del sistema solar en 3D usando realidad aumentada. Podrás aprender sobre sus características, tamaños, órbitas y composición, todo mientras interactúas con ellos en tu entorno real.",
+                style: TextStyle(fontSize: 16),
+              ),
+              const SizedBox(height: 20),
+              // Objetivos de aprendizaje
+              const Text(
+                "Objetivos:",
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(height: 8),
+              const Text(
+                "• Identificar los planetas del sistema solar\n"
+                    "• Comparar tamaños relativos de los planetas\n"
+                    "• Comprender la distribución orbital\n"
+                    "• Conocer características básicas de cada planeta",
                 style: TextStyle(fontSize: 16),
               ),
               const Spacer(),
@@ -61,7 +77,7 @@ class ActivitiesScreen extends StatelessWidget {
                       child: ElevatedButton(
                         onPressed: () {
                           ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(content: Text("Descargando actividad...")),
+                            const SnackBar(content: Text("Descargando recursos de AR...")),
                           );
                         },
                         style: ElevatedButton.styleFrom(
@@ -69,7 +85,7 @@ class ActivitiesScreen extends StatelessWidget {
                           padding: const EdgeInsets.symmetric(vertical: 12.0),
                         ),
                         child: const Text(
-                          "Download",
+                          "Descargar recursos",
                           style: TextStyle(color: Colors.black, fontSize: 16),
                         ),
                       ),
@@ -79,9 +95,10 @@ class ActivitiesScreen extends StatelessWidget {
                       width: MediaQuery.of(context).size.width * 0.5,
                       child: ElevatedButton(
                         onPressed: () {
+                          // Cambiamos para iniciar la nueva actividad ClaseSistemaSolarAR
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => const ArActivity1()),
+                            MaterialPageRoute(builder: (context) => const ClaseSistemaSolarAR()),
                           );
                         },
                         style: ElevatedButton.styleFrom(
@@ -89,7 +106,7 @@ class ActivitiesScreen extends StatelessWidget {
                           padding: const EdgeInsets.symmetric(vertical: 12.0),
                         ),
                         child: const Text(
-                          "Start activity",
+                          "Iniciar actividad",
                           style: TextStyle(color: Colors.black, fontSize: 16),
                         ),
                       ),
