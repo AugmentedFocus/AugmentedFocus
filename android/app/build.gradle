@@ -24,7 +24,7 @@ if (flutterVersionName == null) {
 
 android {
     namespace "com.example.augmentedfocus"
-    compileSdk 34  // Especificado explícitamente
+    compileSdk 35  // Especificado explícitamente
     ndkVersion flutter.ndkVersion
 
     compileOptions {
@@ -44,9 +44,12 @@ android {
     defaultConfig {
         applicationId "com.example.augmentedfocus"
         minSdkVersion 24  // Usa un solo valor definido
-        targetSdkVersion 34  // Especificado explícitamente
+        targetSdkVersion 35  // Especificado explícitamente
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
+        ndk {
+            abiFilters "armeabi-v7a", "arm64-v8a"
+        }
     }
 
     buildTypes {
