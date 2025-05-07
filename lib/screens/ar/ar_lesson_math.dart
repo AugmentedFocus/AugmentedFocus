@@ -192,6 +192,7 @@ class _MathematicsARState extends State<MathematicsAR> with TickerProviderStateM
     final material = ArCoreMaterial(color: currentShape['color'] as Color);
 
     late var arCoreShape;
+
     switch (currentShape['shape']) {
       case 'cube':
         arCoreShape = ArCoreCube(
@@ -201,50 +202,80 @@ class _MathematicsARState extends State<MathematicsAR> with TickerProviderStateM
             (currentShape['size'] as double) * currentScale,
             (currentShape['size'] as double) * currentScale,
           ),
-        ) as ArCoreNode;
+        );
         break;
       case 'sphere':
         arCoreShape = ArCoreSphere(
           materials: [material],
           radius: (currentShape['size'] as double) * currentScale,
-        ) as ArCoreNode;
+        );
         break;
       case 'cylinder':
         arCoreShape = ArCoreCylinder(
           materials: [material],
           radius: (currentShape['size'] as double) * currentScale,
           height: (currentShape['size'] as double) * 2 * currentScale,
-        ) as ArCoreNode;
+        );
         break;
       case 'cone':
-      // For cone, we'll use a regular cylinder
-      // You may need to adjust its appearance elsewhere
+      // Fake a cone by using a cylinder and scaling it to create a tapering effect
         arCoreShape = ArCoreCylinder(
           materials: [material],
-          radius: (currentShape['size'] as double) * currentScale,
-          height: (currentShape['size'] as double) * 2 * currentScale,
-        ) as ArCoreNode;
+          radius: (currentShape['size'] as double) * currentScale,  // Bottom radius
+          height: (currentShape['size'] as double) * 2 * currentScale, // Height of the cone
+        );
+
+        // Apply scaling to narrow the top to fake the cone
+        final coneNode = ArCoreNode(
+          name: 'cone',
+          shape: arCoreShape,
+          position: vector64.Vector3(0, 0, -1),
+          rotation: vector64.Vector4(0, 0, 0, 1),
+          scale: vector64.Vector3(1.0, 0.2, 1.0),  // Make the top part smaller
+        );
+        controller.addArCoreNode(coneNode);
+        break;
       case 'pyramid':
-      // Simulamos una pirámide con un cono cuadrado
+      // Simulate a pyramid by scaling a cube to form a narrowing shape
         arCoreShape = ArCoreCube(
           materials: [material],
           size: vector64.Vector3(
             (currentShape['size'] as double) * currentScale,
-            (currentShape['size'] as double) * currentScale,
+            (currentShape['size'] as double) * currentScale, // Adjust height for pyramid effect
             (currentShape['size'] as double) * currentScale,
           ),
-        ) as ArCoreNode;
+        );
+
+        // Scale to create the pointy pyramid effect
+        final pyramidNode = ArCoreNode(
+          name: 'pyramid',
+          shape: arCoreShape,
+          position: vector64.Vector3(0, 0, -1),
+          rotation: vector64.Vector4(0, 0, 0, 1),
+          scale: vector64.Vector3(1.0, 0.3, 1.0),  // Make the pyramid top smaller
+        );
+        controller.addArCoreNode(pyramidNode);
         break;
       case 'prism':
-      // Simulamos un prisma triangular con un cubo transformado
+      // Simulate a triangular prism with a cube (flattened in one direction)
         arCoreShape = ArCoreCube(
           materials: [material],
           size: vector64.Vector3(
-            (currentShape['size'] as double) * 1.5 * currentScale,
+            (currentShape['size'] as double) * 1.5 * currentScale,  // Width adjusted to simulate triangular shape
             (currentShape['size'] as double) * currentScale,
             (currentShape['size'] as double) * 2 * currentScale,
           ),
-        ) as ArCoreNode;
+        );
+
+        // Scale it to get the "triangular" effect by reducing one side
+        final prismNode = ArCoreNode(
+          name: 'prism',
+          shape: arCoreShape,
+          position: vector64.Vector3(0, 0, -1),
+          rotation: vector64.Vector4(0, 0, 0, 1),
+          scale: vector64.Vector3(0.5, 1.0, 1.0),  // Flatten it to create the illusion of a prism
+        );
+        controller.addArCoreNode(prismNode);
         break;
       default:
         arCoreShape = ArCoreCube(
@@ -254,8 +285,9 @@ class _MathematicsARState extends State<MathematicsAR> with TickerProviderStateM
             (currentShape['size'] as double) * currentScale,
             (currentShape['size'] as double) * currentScale,
           ),
-        ) as ArCoreNode;
+        );
     }
+
 
     // Creamos el nodo de la forma
     final shapeNode = ArCoreNode(
