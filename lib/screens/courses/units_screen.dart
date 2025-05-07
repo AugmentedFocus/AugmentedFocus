@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'activities_screen.dart';
+import 'activities/activities_screen_solar.dart';
 
 class UnitsScreen extends StatelessWidget {
   final String courseTitle;
