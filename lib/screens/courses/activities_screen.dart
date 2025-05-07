@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../ar/ar_activity_1.dart';
-import '../ar/ar_lesson_1.dart'; // Importamos el nuevo archivo
+import '../ar/ar_lesson_solar.dart'; // Importamos el nuevo archivo
 
 class ActivitiesScreen extends StatelessWidget {
   final String topicTitle;
