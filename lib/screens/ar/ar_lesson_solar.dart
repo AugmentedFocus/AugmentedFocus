@@ -415,15 +415,19 @@ class _ClaseSistemaSolarARState extends State<ClaseSistemaSolarAR> with TickerPr
                   ),
                   const SizedBox(height: 10),
 
-                  // Pestañas de información
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      _infoTab('General', 'general'),
-                      _infoTab('Tamaño', 'tamaño'),
-                      _infoTab('Distancia', 'distancia'),
-                      _infoTab('Composición', 'composicion'),
-                    ],
+                  SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      children: [
+                        _infoTab('General', 'general'),
+                        const SizedBox(width: 12),
+                        _infoTab('Tamaño', 'tamaño'),
+                        const SizedBox(width: 12),
+                        _infoTab('Distancia', 'distancia'),
+                        const SizedBox(width: 12),
+                        _infoTab('Composición', 'composicion'),
+                      ],
+                    ),
                   ),
                   const SizedBox(height: 10),
 
@@ -465,43 +469,39 @@ class _ClaseSistemaSolarARState extends State<ClaseSistemaSolarAR> with TickerPr
             bottom: 20,
             left: 0,
             right: 0,
-            child: SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              padding: const EdgeInsets.symmetric(horizontal: 10),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  FloatingActionButton(
-                    heroTag: "btnPrevio",
-                    onPressed: previousPlanet,
-                    backgroundColor: Colors.blueGrey,
-                    child: const Icon(Icons.arrow_back),
-                  ),
-                  const SizedBox(width: 20),
-                  FloatingActionButton(
-                    heroTag: "btnComparar",
-                    onPressed: toggleComparacionTamanos,
-                    backgroundColor: mostrarComparacion ? Colors.green : Colors.blueGrey,
-                    child: const Icon(Icons.compare_arrows),
-                    tooltip: "Comparar tamaños reales",
-                  ),
-                  const SizedBox(width: 20),
-                  FloatingActionButton(
-                    heroTag: "btnOrbitas",
-                    onPressed: toggleOrbitas,
-                    backgroundColor: mostrarOrbitas ? Colors.green : Colors.blueGrey,
-                    child: const Icon(Icons.track_changes),
-                    tooltip: "Mostrar órbitas",
-                  ),
-                  const SizedBox(width: 20),
-                  FloatingActionButton(
-                    heroTag: "btnSiguiente",
-                    onPressed: nextPlanet,
-                    backgroundColor: Colors.blueGrey,
-                    child: const Icon(Icons.arrow_forward),
-                  ),
-                ],
-              ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                FloatingActionButton(
+                  heroTag: "btnPrevio",
+                  onPressed: previousPlanet,
+                  backgroundColor: Colors.blueGrey,
+                  child: const Icon(Icons.arrow_back),
+                ),
+                const SizedBox(width: 20),
+                FloatingActionButton(
+                  heroTag: "btnComparar",
+                  onPressed: toggleComparacionTamanos,
+                  backgroundColor: mostrarComparacion ? Colors.green : Colors.blueGrey,
+                  child: const Icon(Icons.compare_arrows),
+                  tooltip: "Comparar tamaños reales",
+                ),
+                const SizedBox(width: 20),
+                FloatingActionButton(
+                  heroTag: "btnOrbitas",
+                  onPressed: toggleOrbitas,
+                  backgroundColor: mostrarOrbitas ? Colors.green : Colors.blueGrey,
+                  child: const Icon(Icons.track_changes),
+                  tooltip: "Mostrar órbitas",
+                ),
+                const SizedBox(width: 20),
+                FloatingActionButton(
+                  heroTag: "btnSiguiente",
+                  onPressed: nextPlanet,
+                  backgroundColor: Colors.blueGrey,
+                  child: const Icon(Icons.arrow_forward),
+                ),
+              ],
             ),
           ),
         ],
