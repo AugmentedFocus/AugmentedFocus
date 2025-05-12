@@ -809,15 +809,19 @@ class _MathematicsARState extends State<MathematicsAR> with TickerProviderStateM
                   ),
                   const SizedBox(height: 10),
 
-                  // Pestañas de información
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      _infoTab('General', 'general'),
-                      _infoTab('Volumen', 'volumen'),
-                      _infoTab('Área', 'area'),
-                      _infoTab('Propiedades', 'propiedades'),
-                    ],
+                  SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      children: [
+                        _infoTab('General', 'general'),
+                        const SizedBox(width: 12),
+                        _infoTab('Volumen', 'volumen'),
+                        const SizedBox(width: 12),
+                        _infoTab('Área', 'area'),
+                        const SizedBox(width: 12),
+                        _infoTab('Propiedades', 'propiedades'),
+                      ],
+                    ),
                   ),
                   const SizedBox(height: 10),
 
