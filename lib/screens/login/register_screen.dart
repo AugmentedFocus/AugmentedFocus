@@ -6,7 +6,7 @@ class RegisterScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Register',
+          'Registrar',
           style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
         ),
         centerTitle: true,
@@ -18,16 +18,16 @@ class RegisterScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              _buildTextField(label: 'Email', hint: 'Enter your email'),
+              _buildTextField(label: 'Email', hint: 'Ingresa tu email'),
               const SizedBox(height: 20),
 
-              _buildTextField(label: 'Name', hint: 'Enter your name'),
+              _buildTextField(label: 'Nombre', hint: 'Ingresa tu nombre'),
               const SizedBox(height: 20),
 
-              _buildTextField(label: 'Password', hint: 'Create a password', obscureText: true),
+              _buildTextField(label: 'Contraseña', hint: 'Crea tu contraseña', obscureText: true),
               const SizedBox(height: 20),
 
-              _buildTextField(label: 'Confirm password', hint: 'Confirm your password', obscureText: true),
+              _buildTextField(label: 'Confirmar contraseña', hint: 'Confirma tu contraseña', obscureText: true),
               const SizedBox(height: 40),
 
               SizedBox(
@@ -44,7 +44,7 @@ class RegisterScreen extends StatelessWidget {
                     ),
                   ),
                   child: const Text(
-                    'NEXT',
+                    'Siguiente',
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 18,

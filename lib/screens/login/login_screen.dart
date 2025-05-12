@@ -7,7 +7,7 @@ class LoginScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Log in',
+          'Iniciar sesión',
           style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
         ),
         centerTitle: true,
@@ -32,11 +32,11 @@ class LoginScreen extends StatelessWidget {
               const SizedBox(height: 40),
 
               // Email Text Field
-              _buildTextField(label: 'Email', hint: 'Enter your email'),
+              _buildTextField(label: 'Email', hint: 'Ingresa tu email'),
               const SizedBox(height: 20),
 
               // Password Text Field
-              _buildTextField(label: 'Password', hint: 'Enter your password', obscureText: true),
+              _buildTextField(label: 'Constraseña', hint: 'Ingresa tu contraseña', obscureText: true),
               const SizedBox(height: 40),
 
               // Login Button
@@ -57,7 +57,7 @@ class LoginScreen extends StatelessWidget {
                     ),
                   ),
                   child: const Text(
-                    'LOG IN',
+                    'Iniciar sesión',
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 18,

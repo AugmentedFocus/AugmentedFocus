@@ -60,7 +60,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                           elevation: 5,
                         ),
                         child: const Text(
-                          'LOG IN',
+                          'Iniciar sesión',
                           style: TextStyle(
                             color: Colors.black,
                             fontSize: 18,
@@ -94,7 +94,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                           elevation: 5,
                         ),
                         child: const Text(
-                          'REGISTER',
+                          'Registrar',
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 18,
