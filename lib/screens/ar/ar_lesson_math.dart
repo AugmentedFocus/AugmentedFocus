@@ -180,18 +180,29 @@ class _MathematicsARState extends State<MathematicsAR> with TickerProviderStateM
     }
   }
 
+  void clearAllShapes() {
+    // Clear all nodes from the AR scene
+    if (coreController != null) {
+      // First remove all nodes from the controller
+      shapeNodes.forEach((key, value) {
+        coreController!.removeNode(nodeName: key);
+      });
+
+      // Clear our local cache of nodes
+      shapeNodes.clear();
+    }
+  }
+
   void displayShape(ArCoreController controller) {
-    // Limpiamos los nodos existentes
-    shapeNodes.forEach((key, value) {
-      controller.removeNode(nodeName: key);
-    });
-    shapeNodes.clear();
+    // First clear all existing shapes
+    clearAllShapes();
 
     // Creamos la nueva forma geométrica
     final currentShape = shapes[currentShapeIndex];
     final material = ArCoreMaterial(color: currentShape['color'] as Color);
 
     late var arCoreShape;
+    String nodeName = currentShape['name'] as String;
 
     switch (currentShape['shape']) {
       case 'cube':
@@ -203,20 +214,53 @@ class _MathematicsARState extends State<MathematicsAR> with TickerProviderStateM
             (currentShape['size'] as double) * currentScale,
           ),
         );
+
+        final shapeNode = ArCoreNode(
+          name: nodeName,
+          shape: arCoreShape,
+          position: currentShape['position'] as vector64.Vector3,
+          rotation: vector64.Vector4(0, 0, 0, 1),
+        );
+
+        controller.addArCoreNode(shapeNode);
+        shapeNodes[nodeName] = shapeNode;
         break;
+
       case 'sphere':
         arCoreShape = ArCoreSphere(
           materials: [material],
           radius: (currentShape['size'] as double) * currentScale,
         );
+
+        final shapeNode = ArCoreNode(
+          name: nodeName,
+          shape: arCoreShape,
+          position: currentShape['position'] as vector64.Vector3,
+          rotation: vector64.Vector4(0, 0, 0, 1),
+        );
+
+        controller.addArCoreNode(shapeNode);
+        shapeNodes[nodeName] = shapeNode;
         break;
+
       case 'cylinder':
         arCoreShape = ArCoreCylinder(
           materials: [material],
           radius: (currentShape['size'] as double) * currentScale,
           height: (currentShape['size'] as double) * 2 * currentScale,
         );
+
+        final shapeNode = ArCoreNode(
+          name: nodeName,
+          shape: arCoreShape,
+          position: currentShape['position'] as vector64.Vector3,
+          rotation: vector64.Vector4(0, 0, 0, 1),
+        );
+
+        controller.addArCoreNode(shapeNode);
+        shapeNodes[nodeName] = shapeNode;
         break;
+
       case 'cone':
       // Fake a cone by using a cylinder and scaling it to create a tapering effect
         arCoreShape = ArCoreCylinder(
@@ -227,35 +271,41 @@ class _MathematicsARState extends State<MathematicsAR> with TickerProviderStateM
 
         // Apply scaling to narrow the top to fake the cone
         final coneNode = ArCoreNode(
-          name: 'cone',
+          name: nodeName,
           shape: arCoreShape,
-          position: vector64.Vector3(0, 0, -1),
+          position: currentShape['position'] as vector64.Vector3,
           rotation: vector64.Vector4(0, 0, 0, 1),
           scale: vector64.Vector3(1.0, 0.2, 1.0),  // Make the top part smaller
         );
+
         controller.addArCoreNode(coneNode);
+        shapeNodes[nodeName] = coneNode;
         break;
+
       case 'pyramid':
       // Simulate a pyramid by scaling a cube to form a narrowing shape
         arCoreShape = ArCoreCube(
           materials: [material],
           size: vector64.Vector3(
             (currentShape['size'] as double) * currentScale,
-            (currentShape['size'] as double) * currentScale, // Adjust height for pyramid effect
+            (currentShape['size'] as double) * currentScale,
             (currentShape['size'] as double) * currentScale,
           ),
         );
 
         // Scale to create the pointy pyramid effect
         final pyramidNode = ArCoreNode(
-          name: 'pyramid',
+          name: nodeName,
           shape: arCoreShape,
-          position: vector64.Vector3(0, 0, -1),
+          position: currentShape['position'] as vector64.Vector3,
           rotation: vector64.Vector4(0, 0, 0, 1),
           scale: vector64.Vector3(1.0, 0.3, 1.0),  // Make the pyramid top smaller
         );
+
         controller.addArCoreNode(pyramidNode);
+        shapeNodes[nodeName] = pyramidNode;
         break;
+
       case 'prism':
       // Simulate a triangular prism with a cube (flattened in one direction)
         arCoreShape = ArCoreCube(
@@ -269,14 +319,17 @@ class _MathematicsARState extends State<MathematicsAR> with TickerProviderStateM
 
         // Scale it to get the "triangular" effect by reducing one side
         final prismNode = ArCoreNode(
-          name: 'prism',
+          name: nodeName,
           shape: arCoreShape,
-          position: vector64.Vector3(0, 0, -1),
+          position: currentShape['position'] as vector64.Vector3,
           rotation: vector64.Vector4(0, 0, 0, 1),
           scale: vector64.Vector3(0.5, 1.0, 1.0),  // Flatten it to create the illusion of a prism
         );
+
         controller.addArCoreNode(prismNode);
+        shapeNodes[nodeName] = prismNode;
         break;
+
       default:
         arCoreShape = ArCoreCube(
           materials: [material],
@@ -286,20 +339,17 @@ class _MathematicsARState extends State<MathematicsAR> with TickerProviderStateM
             (currentShape['size'] as double) * currentScale,
           ),
         );
+
+        final shapeNode = ArCoreNode(
+          name: nodeName,
+          shape: arCoreShape,
+          position: currentShape['position'] as vector64.Vector3,
+          rotation: vector64.Vector4(0, 0, 0, 1),
+        );
+
+        controller.addArCoreNode(shapeNode);
+        shapeNodes[nodeName] = shapeNode;
     }
-
-
-    // Creamos el nodo de la forma
-    final shapeNode = ArCoreNode(
-      name: currentShape['name'],
-      shape: arCoreShape,
-      position: currentShape['position'] as vector64.Vector3,
-      rotation: vector64.Vector4(0, 0, 0, 0),
-    );
-
-    // Añadimos el nodo a la escena
-    controller.addArCoreNode(shapeNode);
-    shapeNodes[currentShape['name']] = shapeNode;
 
     // Si estamos mostrando fórmulas, las añadimos
     if (mostrarFormulas) {
@@ -310,28 +360,72 @@ class _MathematicsARState extends State<MathematicsAR> with TickerProviderStateM
     _addIndicatorToCurrentShape(controller, currentShape);
 
     // Rotación animada de la forma
+    _setupRotationAnimation(controller, currentShape);
+  }
+
+  void _setupRotationAnimation(ArCoreController controller, Map<String, dynamic> currentShape) {
+    String nodeName = currentShape['name'] as String;
+
+    rotationController.removeListener(() {});  // Remove any existing listeners
 
     rotationController.addListener(() {
-      if (shapeNodes.containsKey(currentShape['name'])) {
+      if (shapeNodes.containsKey(nodeName)) {
         // Get the current node
-        final node = shapeNodes[currentShape['name']]!;
+        final node = shapeNodes[nodeName]!;
 
         // Remove the current node
         controller.removeNode(nodeName: node.name);
+        shapeNodes.remove(node.name);
 
         // Create a new node with updated rotation
-        final updatedNode = ArCoreNode(
-          name: node.name,
-          shape: node.shape,
-          position: node.position?.value,
-          rotation: vector64.Vector4(0, rotationController.value * 360, 0, 1),
-        );
+        late ArCoreNode updatedNode;
+
+        // Recreate the node with the same properties but updated rotation
+        switch (currentShape['shape']) {
+          case 'cone':
+            updatedNode = ArCoreNode(
+              name: nodeName,
+              shape: node.shape,
+              position: node.position?.value,
+              rotation: vector64.Vector4(0, rotationController.value * 360, 0, 1),
+              scale: vector64.Vector3(1.0, 0.2, 1.0),  // Preserve cone scaling
+            );
+            break;
+
+          case 'pyramid':
+            updatedNode = ArCoreNode(
+              name: nodeName,
+              shape: node.shape,
+              position: node.position?.value,
+              rotation: vector64.Vector4(0, rotationController.value * 360, 0, 1),
+              scale: vector64.Vector3(1.0, 0.3, 1.0),  // Preserve pyramid scaling
+            );
+            break;
+
+          case 'prism':
+            updatedNode = ArCoreNode(
+              name: nodeName,
+              shape: node.shape,
+              position: node.position?.value,
+              rotation: vector64.Vector4(0, rotationController.value * 360, 0, 1),
+              scale: vector64.Vector3(0.5, 1.0, 1.0),  // Preserve prism scaling
+            );
+            break;
+
+          default:
+            updatedNode = ArCoreNode(
+              name: nodeName,
+              shape: node.shape,
+              position: node.position?.value,
+              rotation: vector64.Vector4(0, rotationController.value * 360, 0, 1),
+            );
+        }
 
         // Add the updated node
         controller.addArCoreNode(updatedNode);
 
         // Update our reference
-        shapeNodes[currentShape['name']] = updatedNode;
+        shapeNodes[nodeName] = updatedNode;
       }
     });
   }
@@ -359,6 +453,7 @@ class _MathematicsARState extends State<MathematicsAR> with TickerProviderStateM
     );
 
     controller.addArCoreNode(formulaNode);
+    shapeNodes['formula'] = formulaNode;
   }
 
   void displayCoordinateAxes(ArCoreController controller) {
