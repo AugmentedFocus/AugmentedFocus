@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'activities/activities_screen_solar.dart';
+import 'activities/activities_screen_math.dart';
 
 class UnitsScreen extends StatelessWidget {
   final String courseTitle;
@@ -78,15 +79,42 @@ class UnitsScreen extends StatelessWidget {
                             tileColor: activityColor,
                             title: Text(activity),
                             onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => ActivitiesScreen(
-                                    topicTitle: topic,
-                                    activityTitle: activity,
+                              // Checking specific conditions for Unit 1, Topic 1
+                              if (unitTitle == "Unit 1" && topic == "Topic 1") {
+                                // For Unit 1, Topic 1, open ActivitiesScreen for Activity 1 and Activity 2
+                                if (activity == "Activity 1") {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => ActivitiesScreen(
+                                        topicTitle: topic,
+                                        activityTitle: activity,
+                                      ),
+                                    ),
+                                  );
+                                } else {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => ActivitiesScreenMath(
+                                        topicTitle: topic,
+                                        activityTitle: activity,
+                                      ),
+                                    ),
+                                  );
+                                }
+                              } else {
+                                // For other activities, open ActivitiesScreenMath
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => ActivitiesScreenMath(
+                                      topicTitle: topic,
+                                      activityTitle: activity,
+                                    ),
                                   ),
-                                ),
-                              );
+                                );
+                              }
                             },
                           );
                         }).toList(),
