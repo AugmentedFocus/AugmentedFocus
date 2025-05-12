@@ -47,27 +47,24 @@ class ActivitiesScreenMath extends StatelessWidget {
                 ],
               ),
               const SizedBox(height: 16),
-              // Descripción de la actividad actualizada para sistema solar
               const Text(
-                "Actividad de Realidad Aumentada: Matemática.",
+                "Actividad de Realidad Aumentada: Matemática. En esta actividad, usarás realidad aumentada para explorar conceptos matemáticos como figuras geométricas en 3D, fracciones y operaciones básicas. Podrás visualizar y manipular objetos matemáticos, lo cual facilitará tu comprensión espacial y lógica.",
                 style: TextStyle(fontSize: 16),
               ),
               const SizedBox(height: 20),
-              // Objetivos de aprendizaje
               const Text(
                 "Objetivos:",
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 8),
               const Text(
-                "• nan\n"
-                    "• nan\n"
-                    "• nan\n"
-                    "• nan",
+                "• Visualizar figuras geométricas tridimensionales\n"
+                    "• Comprender fracciones y su representación gráfica\n"
+                    "• Practicar operaciones básicas (suma, resta, multiplicación y división)\n"
+                    "• Fortalecer habilidades de razonamiento espacial mediante la interacción en AR",
                 style: TextStyle(fontSize: 16),
               ),
               const Spacer(),
-              // Botones de Descargar e Iniciar Actividad
               Center(
                 child: Column(
                   children: [
@@ -94,7 +91,6 @@ class ActivitiesScreenMath extends StatelessWidget {
                       width: MediaQuery.of(context).size.width * 0.5,
                       child: ElevatedButton(
                         onPressed: () {
-                          // Cambiamos para iniciar la nueva actividad ClaseSistemaSolarAR
                           Navigator.push(
                             context,
                             MaterialPageRoute(builder: (context) => const MathematicsAR()),
