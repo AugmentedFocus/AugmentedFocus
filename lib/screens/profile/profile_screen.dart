@@ -8,7 +8,7 @@ class ProfileScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Profile',
+          'Perfil',
           style: TextStyle(
             fontSize: 24,
             fontWeight: FontWeight.bold,
@@ -34,13 +34,13 @@ class ProfileScreen extends StatelessWidget {
             const SizedBox(height: 30),
 
             // Text Fields with Rounded Borders
-            _buildTextField(label: 'Name', hint: 'Name'),
+            _buildTextField(label: 'Leonardo Cesias', hint: 'Leonardo Cesias'),
             const SizedBox(height: 16),
-            _buildTextField(label: 'ID', hint: 'ID'),
+            _buildTextField(label: '71205216', hint: '71205216'),
             const SizedBox(height: 16),
-            _buildTextField(label: 'Email', hint: 'Email'),
+            _buildTextField(label: 'lpcd_04@hotmail.com', hint: 'lpcd_04@hotmail.com'),
             const SizedBox(height: 16),
-            _buildTextField(label: 'Address', hint: 'Address'),
+            _buildTextField(label: 'Carlos Gonzales 251', hint: 'Carlos Gonzales 251'),
 
             const SizedBox(height: 30),
 
@@ -59,7 +59,7 @@ class ProfileScreen extends StatelessWidget {
                   ),
                 ),
                 child: const Text(
-                  'LOG OUT',
+                  'Cerrar sesión',
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 18,
