@@ -7,6 +7,7 @@ class ProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: const Text(
           'Perfil',
           style: TextStyle(
@@ -16,15 +17,24 @@ class ProfileScreen extends StatelessWidget {
         ),
         centerTitle: true,
         elevation: 0,
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.bug_report, color: Colors.redAccent),
+            tooltip: 'Reportar Error',
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => const ReportErrorScreen()),
+              );
+            },
+          ),
+        ],
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(20.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // FAQ Button
-
-            // Circle Avatar with Shadow
             Center(
               child: CircleAvatar(
                 radius: 50,
@@ -37,8 +47,6 @@ class ProfileScreen extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 30),
-
-            // Text Fields with Rounded Borders
             _buildTextField(label: 'Leonardo Cesias', hint: 'Leonardo Cesias'),
             const SizedBox(height: 16),
             _buildTextField(label: '71205216', hint: '71205216'),
@@ -49,8 +57,6 @@ class ProfileScreen extends StatelessWidget {
             _buildTextField(label: 'Carlos Gonzales 251', hint: 'Carlos Gonzales 251'),
 
             const SizedBox(height: 30),
-
-            // Logout Button
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
@@ -97,43 +103,12 @@ class ProfileScreen extends StatelessWidget {
                 ),
               ),
             ),
-
-            const SizedBox(height: 30),
-
-            // Button to Report Error
-            SizedBox(
-              width: double.infinity,
-              child: ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (_) => const ReportErrorScreen()));
-                },
-                style: ElevatedButton.styleFrom(
-                  padding: const EdgeInsets.symmetric(vertical: 18),
-                  backgroundColor: Colors.redAccent,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                ),
-                child: const Text(
-                  'Reportar Error',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-            ),
           ],
         ),
       ),
     );
   }
 
-  // Función para mostrar el diálogo FAQ
   void _showFAQDialog(BuildContext context) {
     showDialog(
       context: context,
@@ -249,8 +224,6 @@ class ProfileScreen extends StatelessWidget {
     );
   }
 
-
-  // FAQ item widget
   Widget _buildFAQItem({required String question, required String answer}) {
     return ExpansionTile(
       title: Text(
@@ -266,7 +239,6 @@ class ProfileScreen extends StatelessWidget {
     );
   }
 
-  // Helper function to build text fields
   Widget _buildTextField({required String label, required String hint}) {
     return TextField(
       decoration: InputDecoration(
@@ -311,9 +283,6 @@ class _ReportErrorScreenState extends State<ReportErrorScreen> {
       return;
     }
 
-    // Aquí podrías enviar el reporte a un backend o guardarlo
-
-    // Luego, volver al perfil
     Navigator.pop(context);
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(content: Text('Reporte enviado. Gracias por tu colaboración!')),
