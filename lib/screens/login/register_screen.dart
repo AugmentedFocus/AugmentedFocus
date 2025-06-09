@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../data/user_repository.dart';
 import '../login/welcome_screen.dart';
 
 class RegisterScreen extends StatefulWidget {
@@ -44,6 +45,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
       );
       return;
     }
+
+    FakeUserRepository.addUser(
+      _emailController.text.trim(),
+      _passwordController.text.trim(),
+    );
 
     Navigator.pushNamed(context, '/');
   }
