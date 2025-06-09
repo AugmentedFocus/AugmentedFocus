@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../widgets/navbar_roots.dart';
 import '../login/welcome_screen.dart';
+import '../../data/user_repository.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -11,18 +12,11 @@ class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
-  final List<Map<String, String>> _fakeUsers = [
-    {'email': 'ejemplo@correo.com', 'password': '123456'},
-    {'email': 'admin@demo.com', 'password': 'admin123'},
-    {'email': 'leocesias', 'password': '123'},
-  ];
-
   void _login() {
     String email = _emailController.text.trim();
     String password = _passwordController.text.trim();
 
-    bool isValid = _fakeUsers.any((user) =>
-    user['email'] == email && user['password'] == password);
+    bool isValid = FakeUserRepository.authenticate(email, password); // ✅
 
     if (isValid) {
       Navigator.pushReplacement(
