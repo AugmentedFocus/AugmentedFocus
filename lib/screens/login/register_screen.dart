@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../login/welcome_screen.dart';
 
 class RegisterScreen extends StatefulWidget {
   @override
@@ -44,7 +45,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
       return;
     }
 
-    // Si todo está bien, se continúa con el registro (por ahora navegación)
     Navigator.pushNamed(context, '/');
   }
 
@@ -52,6 +52,15 @@ class _RegisterScreenState extends State<RegisterScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (context) => const WelcomeScreen()),
+            );
+          },
+        ),
         title: const Text(
           'Registrar',
           style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
