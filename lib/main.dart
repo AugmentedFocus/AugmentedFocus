@@ -1,10 +1,16 @@
-import 'package:augmentedfocus/screens/login/login_screen.dart';
-import 'package:augmentedfocus/screens/login/welcome_screen.dart';
-import 'package:augmentedfocus/widgets/navbar_roots.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import 'package:augmentedfocus/screens/login/welcome_screen.dart';
+import 'package:augmentedfocus/providers/font_size_provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (_) => FontSizeProvider(),
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -12,10 +18,21 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'AugmentedFocus',
-      home: WelcomeScreen(),
+    return Consumer<FontSizeProvider>(
+      builder: (context, fontProvider, _) {
+        return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          title: 'AugmentedFocus',
+          theme: ThemeData(
+            textTheme: TextTheme(
+              bodyMedium: TextStyle(fontSize: fontProvider.fontSize),
+              bodyLarge: TextStyle(fontSize: fontProvider.fontSize + 2),
+              labelLarge: TextStyle(fontSize: fontProvider.fontSize),
+            ),
+          ),
+          home: const WelcomeScreen(),
+        );
+      },
     );
   }
 }

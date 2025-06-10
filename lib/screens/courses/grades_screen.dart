@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:augmentedfocus/providers/font_size_provider.dart';
 
 class GradesScreen extends StatelessWidget {
   const GradesScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final fontSize = Provider.of<FontSizeProvider>(context).fontSize;
+
     final List<Color> colors = [
       Colors.redAccent,
       Colors.greenAccent,
     ];
 
-    // Lista actualizada de cursos con sus calificaciones reales
     final List<Map<String, dynamic>> courseGrades = [
       {
         "title": "Primer curso",
@@ -29,7 +32,10 @@ class GradesScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Calificaciones'),
+        title: Text(
+          'Calificaciones',
+          style: TextStyle(fontSize: fontSize + 4, fontWeight: FontWeight.bold),
+        ),
         centerTitle: true,
       ),
       body: ListView.builder(
@@ -58,8 +64,8 @@ class GradesScreen extends StatelessWidget {
                       children: [
                         Text(
                           course['title'],
-                          style: const TextStyle(
-                            fontSize: 20,
+                          style: TextStyle(
+                            fontSize: fontSize + 2,
                             fontWeight: FontWeight.bold,
                             color: Colors.black,
                           ),
@@ -88,15 +94,15 @@ class GradesScreen extends StatelessWidget {
                               children: [
                                 Text(
                                   grade['label'],
-                                  style: const TextStyle(
-                                    fontSize: 16,
+                                  style: TextStyle(
+                                    fontSize: fontSize,
                                     color: Colors.black,
                                   ),
                                 ),
                                 Text(
                                   grade['score'],
-                                  style: const TextStyle(
-                                    fontSize: 16,
+                                  style: TextStyle(
+                                    fontSize: fontSize,
                                     color: Colors.black54,
                                   ),
                                 ),

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:augmentedfocus/providers/font_size_provider.dart';
+import 'package:provider/provider.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -17,6 +19,11 @@ class ProfileScreen extends StatelessWidget {
         ),
         centerTitle: true,
         elevation: 0,
+        leading: IconButton(
+          icon: const Icon(Icons.text_fields, color: Colors.black),
+          tooltip: 'Ajustar tamaño de fuente',
+          onPressed: () => _showFontSizeDialog(context),
+        ),
         actions: [
           IconButton(
             icon: const Icon(Icons.bug_report, color: Colors.redAccent),
@@ -106,6 +113,48 @@ class ProfileScreen extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+
+  void _showFontSizeDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (context) {
+        final fontSizeProvider = Provider.of<FontSizeProvider>(context, listen: false);
+        return AlertDialog(
+          title: const Text('Tamaño de letra'),
+          content: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              IconButton(
+                icon: const Icon(Icons.remove),
+                onPressed: () {
+                  fontSizeProvider.decreaseFontSize();
+                },
+              ),
+              IconButton(
+                icon: const Icon(Icons.refresh),
+                color: Colors.orange,
+                onPressed: () {
+                  fontSizeProvider.resetFontSize();
+                },
+              ),
+              IconButton(
+                icon: const Icon(Icons.add),
+                onPressed: () {
+                  fontSizeProvider.increaseFontSize();
+                },
+              ),
+            ],
+          ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(context),
+              child: const Text('Cerrar'),
+            ),
+          ],
+        );
+      },
     );
   }
 
