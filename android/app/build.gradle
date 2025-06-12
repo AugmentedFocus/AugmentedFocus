@@ -24,17 +24,16 @@ if (flutterVersionName == null) {
 
 android {
     namespace "com.example.augmentedfocus"
-    compileSdk 35  // Especificado explícitamente
+    compileSdk = 35
     ndkVersion flutter.ndkVersion
 
     compileOptions {
-        // Actualiza a una versión compatible con Java 20
         sourceCompatibility JavaVersion.VERSION_17
         targetCompatibility JavaVersion.VERSION_17
     }
 
     kotlinOptions {
-        jvmTarget = '17'  // Actualizado para coincidir con Java 17
+        jvmTarget = '17'
     }
 
     sourceSets {
@@ -43,8 +42,8 @@ android {
 
     defaultConfig {
         applicationId "com.example.augmentedfocus"
-        minSdkVersion 24  // Usa un solo valor definido
-        targetSdkVersion 35  // Especificado explícitamente
+        minSdkVersion 24
+        targetSdkVersion 35
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
         ndk {
@@ -54,7 +53,9 @@ android {
 
     buildTypes {
         release {
-            signingConfig signingConfigs.debug
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
 }

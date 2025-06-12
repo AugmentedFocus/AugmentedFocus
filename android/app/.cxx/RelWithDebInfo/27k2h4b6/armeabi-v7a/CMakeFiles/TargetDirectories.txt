@@ -1,0 +1,2 @@
+D:/Github/AugmentedFocus/android/app/.cxx/RelWithDebInfo/27k2h4b6/armeabi-v7a/CMakeFiles/edit_cache.dir
+D:/Github/AugmentedFocus/android/app/.cxx/RelWithDebInfo/27k2h4b6/armeabi-v7a/CMakeFiles/rebuild_cache.dir
